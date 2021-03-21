@@ -1,34 +1,62 @@
-#include <iostream>
-#include <cmath>
+
+// Online IDE - Code Editor, Compiler, Interpreter
+
+#include<iostream>
+#include<string>
+#include<cstdlib>
+#include<ctime>
 
 using namespace std;
 
 
-double power(double base, int exponent)
+void play_game()
 {
-    double result = 1;
-    for(int i = 0; i < exponent; i++)
+    int random = rand() % 251;
+    cout<<"Guess a number: ";
+    while(true)
     {
-        result = result * base;
+        int guess;
+        cin>>guess;
+        if(guess == random)
+        {
+            cout<<"You win!\n";
+            break;
+        }else if (guess < random)
+        {
+            cout<<"Too low \n";
+        }else
+        {
+            cout<<"Too High\n";
+        }
     }
-    return result;
-}
-
-void print_pow(double base, int exponent)
-{
-  double myPower = power(base, exponent);
-  cout << base << "raised to the " << exponent << "power is" << myPower << ".\n";
 }
 
 int main()
 {
-    double base;
-    int exponent;
-    cout << "What is the base?: ";
-    cin >> base;
-    cout << "What is the exponent?: ";
-    cin >> exponent;
-    print_pow(base,exponent);
-    return 0;
+        srand(time(NULL));
+        int choice;
+
+    
+    do
+    {
+        cout<<"0.Quit"; 
+    cout<< endl;
+    cout<<"1.play game\n";
+    cin >> choice;
+    
+    switch(choice)
+    {
+        case 0:
+        cout<< "Thanks for nothing\n";
+        return 0;
+        case 1:
+        play_game();
+        break;
+        
+    }
+
+    }while(choice != 0);
+    
+    
     
 }
