@@ -9,7 +9,7 @@
 using namespace std;
 
 
-void StoryText()
+void StoryText(int CodeSum, int CodeProduct)
 {
     cout <<"You find yourself trapped in a well secured cement basement with 3 other captives." << endl;
     cout <<"You all don't know how you ended up here, but you do know that there is a way out." << endl;
@@ -18,13 +18,36 @@ void StoryText()
     cout <<"If you guess right, the door will open to your safety, " << endl;
     cout <<"if you guess wrong, then toxic gas will be released in the room leading you and your fellow captives to doom." << endl;
     cout <<"Since no one in the room decided to take responsibility for their lives by trying to figure out the code, you all decided to play rock paper scissors." << endl;
-    cout <<"It turns out that you are the one to try and open the door.  You kept in mind the hint at the end of the message on the wall:" << endl;
-    cout <<"'There are three numbers needed to open the door, three of the numbers multiplied together make n," << endl;
-    cout <<"the numbers added together makes n.'" << endl;
+    cout <<"It turns out that you are the one to try and open the door." << endl;
+    cout << endl;
+    cout << "You kept in mind the hint at the end of the message on the wall: " << endl;
+    cout <<"There are 3 numbers needed to open the door" << endl << "three of the numbers multiplied together make: " << CodeProduct << endl;
+    cout <<"the numbers added together makes: "<< CodeSum << endl;
 }
 
-void play_game()
+int PlayGame(int CodeSum, int CodeProduct)
 {
+
+    int GuessA, GuessB, GuessC, GuessSum, GuessProduct;
+
+
+        cout << "You make your first guess: " << endl;
+        cin >> GuessA;
+        cin >> GuessB;
+        cin >> GuessC;
+
+        GuessSum = GuessA + GuessB + GuessC;
+        GuessProduct = GuessA * GuessB * GuessC;
+
+        if (GuessSum == CodeSum && GuessProduct == CodeProduct)
+        {
+            cout << "You Win!";
+        } else {
+            cout << "You Lose!";
+        }
+
+        return 0;
+
     // int random = rand() % 251;
     // cout<<"Guess a number: ";
     // while(true)
@@ -47,6 +70,20 @@ void play_game()
 
 int main()
 {
+
+    int CodeA = 4;
+    int CodeB = 3;
+    int CodeC = 2;
+
+    int CodeSum = CodeA + CodeB + CodeC;
+    int CodeProduct = CodeA * CodeB * CodeC;
+
+
+    StoryText(CodeSum, CodeProduct);
+    PlayGame(CodeSum, CodeProduct);
+
+
+
     //     srand(time(NULL));
     //     int choice;
 
