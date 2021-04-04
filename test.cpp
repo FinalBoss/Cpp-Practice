@@ -122,6 +122,7 @@ int main()
             } else if (Retry == "n")
             {
                 cout << "Game Over! \n";
+                return 0;
             }
         }
         
