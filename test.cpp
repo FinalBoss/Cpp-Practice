@@ -28,6 +28,7 @@ void StoryText(int CodeSum, int CodeProduct, int Difficulty)
     cout <<"There are 3 numbers needed to open the door \n" << "three of the numbers multiplied together make: " << CodeProduct << endl;
     cout <<"the numbers added together makes: "<< CodeSum << endl;
    } else if (Difficulty == 2) {
+       cout << "Please move onto the next level! \n";
        cout << "\"Next Level?\" \n";
        cout << "Before we could even rejoice, a voice from the speaker tells us to move to the next level. \n";
        cout << "Which means, our nightmare isn't over yet... \n";
@@ -35,11 +36,11 @@ void StoryText(int CodeSum, int CodeProduct, int Difficulty)
     cout << "The level " << Difficulty << " death game is about to begin. \n";
 }
 
-bool PlayGame(int CodeSum, int CodeProduct, int Difficulty)
+bool PlayGame(int CodeSum, int CodeProduct, int Difficulty, int Lives)
 {
 
     int GuessA, GuessB, GuessC, GuessSum, GuessProduct;
-
+    string Retry;
 
         cout << "You make your first guess: \n";
         cin >> GuessA >> GuessB >> GuessC;
@@ -49,18 +50,16 @@ bool PlayGame(int CodeSum, int CodeProduct, int Difficulty)
 
         if (GuessSum == CodeSum && GuessProduct == CodeProduct)
         {
-            if(Difficulty <= 1){
-            cout << "You Win! Move on to the next level. \n";
-            } else {
-                cout << "You're home free, congrats! \n";
-            }
+           
+            cout << "You Win!\n";
+            
             return true;
         } else {
-            cout << "You Lose!  Continue?  \n";
-            return false;
+            cout << "You Lose! \n";
+           
         }
 
-        return 0;
+        return false;
 
     // int random = rand() % 251;
     // cout<<"Guess a number: ";
@@ -94,12 +93,14 @@ int main()
     int CodeProduct = CodeA * CodeB * CodeC;
     int LevelDifficulty = 1;
     int const MaxLevel = 4;
+    int Lives = 3;
+    string Retry;
 
     while(LevelDifficulty <= MaxLevel) 
     {
 
         StoryText(CodeSum, CodeProduct, LevelDifficulty);
-        bool bLevelComplete = PlayGame(CodeSum, CodeProduct, LevelDifficulty);
+        bool bLevelComplete = PlayGame(CodeSum, CodeProduct, LevelDifficulty, Lives);
         cin.clear();
         cin.ignore();
 
@@ -109,10 +110,25 @@ int main()
            
             ++LevelDifficulty;
     
+        } else {
+
+            cout << "Continue?  y/n \n";
+            cin >> Retry;
+            if (Retry == "y")
+            {
+
+                --Lives;
+                cout << "You have " << Lives << "Lives left. \n";
+            } else if (Retry == "n")
+            {
+                cout << "Game Over! \n";
+            }
         }
         
     
     }
+
+     cout << "You're home free, congrats! \n";
 
 
     //     srand(time(NULL));
