@@ -49,8 +49,11 @@ bool PlayGame(int CodeSum, int CodeProduct, int Difficulty)
 
         if (GuessSum == CodeSum && GuessProduct == CodeProduct)
         {
+            if(Difficulty <= 1){
             cout << "You Win! Move on to the next level. \n";
-
+            } else {
+                cout << "You're home free, congrats! \n";
+            }
             return true;
         } else {
             cout << "You Lose!  Continue?  \n";
